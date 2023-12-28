@@ -1,0 +1,20 @@
+//personagem  done
+//classes   done
+//level up  done
+//matar o player
+//mobs
+//boss
+//equips
+//areas
+//dungeons
+//cidades
+//dinheiro
+//gathering
+//craft
+//classes avançadas
+//dialogos
+//escolhas
+//mudanças na politica das cidades e estruturais de acordo com suas escolhas de dialogos
+//galinhas que de tão hit kill
+//1 crab apenas na area inicial com respawn de 30 min
+//quest para matar 20 crabs na area incial

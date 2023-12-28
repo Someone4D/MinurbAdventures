@@ -1,0 +1,14 @@
+C:\Users\Bruno\Desktop\MinurbAdventures\bin\Debug\net7.0\MinurbAdventures.exe
+C:\Users\Bruno\Desktop\MinurbAdventures\bin\Debug\net7.0\MinurbAdventures.deps.json
+C:\Users\Bruno\Desktop\MinurbAdventures\bin\Debug\net7.0\MinurbAdventures.runtimeconfig.json
+C:\Users\Bruno\Desktop\MinurbAdventures\bin\Debug\net7.0\MinurbAdventures.dll
+C:\Users\Bruno\Desktop\MinurbAdventures\bin\Debug\net7.0\MinurbAdventures.pdb
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\MinurbAdventures.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\MinurbAdventures.AssemblyInfoInputs.cache
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\MinurbAdventures.AssemblyInfo.cs
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\MinurbAdventures.csproj.CoreCompileInputs.cache
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\MinurbAdventures.dll
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\refint\MinurbAdventures.dll
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\MinurbAdventures.pdb
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\MinurbAdventures.genruntimeconfig.cache
+C:\Users\Bruno\Desktop\MinurbAdventures\obj\Debug\net7.0\ref\MinurbAdventures.dll
