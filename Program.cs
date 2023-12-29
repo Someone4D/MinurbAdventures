@@ -1,32 +1,19 @@
 ﻿using static GameSystem;
 using static Menu;
 
-Player player = MainMenu();
 
-// Player player = new Player();
-// int exp = 10;
+Start();
 
-// player = Menu.CharacterCreation();
-
-while(true)
+void Start()
 {
-    Monster monster = new Monster();
-    
-    MonsterType chosenMonster = Menu.ShowBattleMenu();
-    
-    monster.SpawnMonster(chosenMonster);
-
-    Combat.Battle(player, monster);
+    Player player = TitleScreen();
+    Run(player);
 }
 
-
-
-// while(true)
-// {
-//     exp += 25;
-//     Console.Clear();
-//     player.GainExperience(exp);
-//     Menu.ShowPlayerStatus(player);
-//     Console.WriteLine($"\n\nVocê ganhou {exp} de experiência.");
-//     Console.ReadKey();
-// }
+void Run(Player player)
+{
+    while(true)
+    {
+        MainMenu(player);
+    }
+}

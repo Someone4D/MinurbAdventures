@@ -1,8 +1,13 @@
 using static GameSystem;
 
+//explorar - areas
+//cidade - loja
+//inventario
+//status - distribuir atributos
+
 public static class Menu
 {
-    public static Player MainMenu()
+    public static Player TitleScreen()
     {
         Console.Clear();
         Title("Bem vindo a Minurb Adventures!");
@@ -15,9 +20,83 @@ public static class Menu
         if(option == '1')
             return CharacterCreation();
         else if(option == '2')
-            return null;
+            return new Player()
+            {
+                Name = "MindBlank",
+                Class = CharacterClass.Warrior,
+                Level = 1,
+                Experience = 0,
+                MaxExperience = 100,
+                MaxHealthPoints = 100,
+                MaxManaPoints = 100,
+                Attack = 10,
+                Defense = 5,
+                HealthPoints = 100,
+                ManaPoints = 100,
+                Dead = false,
+            };
         
         return null;
+    }
+
+    public static void MainMenu(Player player)
+    {
+        Console.Clear();
+        Title($"{player.Name} - HP: {player.HealthPoints}/{player.MaxHealthPoints} MP: {player.ManaPoints}/{player.MaxManaPoints} Level: {player.Level} ({player.Experience}/{player.MaxExperience})");
+        Gold(player.Gold);
+
+        int option = ShowOptions(new List<string>(){"Explorar", "Cidade", "Status", "Inventário"});
+        
+        if(option == '1')
+            Explore(player);
+        else if(option == '2')
+            City();
+        else if(option == '3')
+            Status(player);
+        else if(option == '4')
+            Inventory();
+    }
+
+    private static void Inventory()
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void Status(Player player)
+    {
+        ShowPlayerStatus(player);
+    }
+
+    private static void City()
+    {
+        throw new NotImplementedException();
+    }
+
+    private static void Explore(Player player)
+    {
+        int area = AreaMenu();
+        if(area == '1')
+        {
+            while(true)
+            {
+                Console.Clear();
+
+                Title("Forest");
+                int opt = ShowOptions(new List<string>(){"Explorar", "Sair"});
+                if(opt == 1)
+                    Combat.Battle(player, Monster.SpawnRandomMonster());
+                else
+                    break;
+            }
+            
+        }
+            
+    }
+
+    private static int AreaMenu()
+    {
+        Console.Clear();
+        return ShowOptions(Area.GetAllAreaNames());
     }
 
     public static int ChooseOption()
@@ -94,6 +173,22 @@ public static class Menu
         Title("Você morreu...");
         Message("Pressione uma tecla para continuar");
         Console.ReadKey();
-        MainMenu();
+        TitleScreen();
+    }
+
+    public static int ShowOptions(List<string> options)
+    {
+        Message("Escolha uma opção: ");
+
+        int index = 1;
+
+        foreach (var option in options)
+        {
+            Message($"{index} - " + option);
+            index++;
+        }
+
+        return ChooseOption();
+        
     }
 }

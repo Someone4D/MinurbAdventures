@@ -2,10 +2,6 @@ public class Player : Character // Player está herdando a classe Character
 {
     public string Title { get; set; }
 
-    public Player()
-    {
-        
-    }
 
     public void GainExperience(int xp)
     {

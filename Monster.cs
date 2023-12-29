@@ -49,7 +49,73 @@ public class Monster : Character
             ManaPoints = MaxManaPoints;
         }
     }
+
+    public static Monster SpawnRandomMonster()
+    {
+        Random random = new Random();
+        int probability = random.Next(1, 3);
+
+        if(probability == 1)
+        {
+            return new Monster()
+            {
+            Name = "Crab",
+            Class = CharacterClass.Monster,
+            Rank = MonsterRank.Normal,
+            Level = 1,
+            Experience = 10,
+            MaxExperience = 15,
+            MaxHealthPoints = 30,
+            MaxManaPoints = 0,
+            Attack = 10,
+            Defense = 2,
+            HealthPoints = 30,
+            ManaPoints = 0,
+            };
+        }
+        else if(probability == 2)
+        {
+            return new Monster()
+            {
+            Name = "Shiny Crab",
+            Class = CharacterClass.Monster,
+            Rank = MonsterRank.Unique,
+            Level = 2,
+            Experience = 10,
+            MaxExperience = 50,
+            MaxHealthPoints = 70,
+            MaxManaPoints = 0,
+            Attack = 12,
+            Defense = 5,
+            HealthPoints = 70,
+            ManaPoints = 0,
+            };   
+        }
+        else if(probability == 3)
+        {
+            return new Monster()
+            {
+            Name = "Crablicious",
+            Class = CharacterClass.Monster,
+            Rank = MonsterRank.Boss,
+            Level = 5,
+            Experience = 100,
+            MaxExperience = 150,
+            MaxHealthPoints = 300,
+            MaxManaPoints = 150,
+            Attack = 15,
+            Defense = 8,
+            HealthPoints = 300,
+            ManaPoints = 150,
+            };   
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
+
 
 public enum MonsterType
 {

@@ -8,6 +8,7 @@ public class Character
     public int Level { get; set; }
     public int Experience { get; set; }
     public int MaxExperience {get; set;}
+    public int Gold {get; set;}
     public int HealthPoints { get; set; }
     public int MaxHealthPoints { get; set; }
     public int ManaPoints { get; set; }

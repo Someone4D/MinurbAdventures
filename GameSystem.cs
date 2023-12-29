@@ -11,4 +11,9 @@ public static class GameSystem
         Console.ForegroundColor = color;
         Console.WriteLine(text);
     }
+
+    public static void Gold(int gold)
+    {
+        Message(gold.ToString() + " Minurbiuns", ConsoleColor.Yellow);
+    }
 }
