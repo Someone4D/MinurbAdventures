@@ -2,6 +2,10 @@ public class Player : Character // Player está herdando a classe Character
 {
     public string Title { get; set; }
 
+    public void GainGold(int gold)
+    {
+        Gold += gold;
+    }
 
     public void GainExperience(int xp)
     {
@@ -40,6 +44,7 @@ public class Player : Character // Player está herdando a classe Character
             }
             
             HealthPoints = MaxHealthPoints;
+            ManaPoints = MaxManaPoints;
         }
     }
 }

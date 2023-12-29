@@ -42,15 +42,16 @@ public static class Menu
     public static void MainMenu(Player player)
     {
         Console.Clear();
-        Title($"{player.Name} - HP: {player.HealthPoints}/{player.MaxHealthPoints} MP: {player.ManaPoints}/{player.MaxManaPoints} Level: {player.Level} ({player.Experience}/{player.MaxExperience})");
+        Title($"{player.Name} - HP: {player.HealthPoints}/{player.MaxHealthPoints} MP: {player.ManaPoints}/{player.MaxManaPoints} Level: {player.Level} ({player.Experience}/{player.MaxExperience})", ConsoleColor.Cyan);
         Gold(player.Gold);
+        Message("");
 
         int option = ShowOptions(new List<string>(){"Explorar", "Cidade", "Status", "Inventário"});
         
         if(option == '1')
             Explore(player);
         else if(option == '2')
-            City();
+            City(player);
         else if(option == '3')
             Status(player);
         else if(option == '4')
@@ -64,12 +65,23 @@ public static class Menu
 
     private static void Status(Player player)
     {
+        Console.Clear();
+
         ShowPlayerStatus(player);
+        Message("Pressione algo para continuar...");
+        
+        Console.ReadKey();
     }
 
-    private static void City()
+    private static void City(Player player)
     {
-        throw new NotImplementedException();
+        Console.Clear();
+
+        player.HealCharacter(player.MaxHealthPoints);
+        Message("Você descansa em uma pousada da cidade e recupera suas forças.", ConsoleColor.Blue);
+        Message("\nPressione algo para continuar...");
+
+        Console.ReadKey();
     }
 
     private static void Explore(Player player)
@@ -81,16 +93,42 @@ public static class Menu
             {
                 Console.Clear();
 
-                Title("Forest");
+                Title("Floresta", ConsoleColor.Green);
                 int opt = ShowOptions(new List<string>(){"Explorar", "Sair"});
-                if(opt == 1)
+                if(opt == '1')
+                {
                     Combat.Battle(player, Monster.SpawnRandomMonster());
+                    break;
+                }
                 else
                     break;
             }
             
         }
+        else if(area == '2')
+        {
+            while(true)
+            {
+                Console.Clear();
+
+                Title("Caverna", ConsoleColor.DarkGray);
+                int opt = ShowOptions(new List<string>(){"Explorar", "Sair"});
+                if(opt == '1')
+                {
+                    Combat.Battle(player, Monster.SpawnMonster(MonsterType.AncientDragon));
+                    break;
+                }
+                else
+                    break;
+            }
             
+        }
+        
+        if(player.Dead == true)
+        {
+            player.Dead = false;
+            player.HealthPoints = 1;
+        }
     }
 
     private static int AreaMenu()
@@ -118,10 +156,8 @@ public static class Menu
         Console.Clear();
 
         Message("Selecione uma classe: ");
-        Message("1 - Warrior\n2 - Mage\n3 - Archer\n");
-
-        int option = ChooseOption();
-
+        int option = ShowOptions(new List<string>(){"Warrior", "Mage", "Archer"});
+        
         if(option == '1')
             character.Class = CharacterClass.Warrior;
         else if(option == '2')
@@ -173,7 +209,6 @@ public static class Menu
         Title("Você morreu...");
         Message("Pressione uma tecla para continuar");
         Console.ReadKey();
-        TitleScreen();
     }
 
     public static int ShowOptions(List<string> options)

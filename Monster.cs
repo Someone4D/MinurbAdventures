@@ -1,59 +1,73 @@
 public class Monster : Character
 {
     public MonsterRank Rank { get; set; }
-    public void SpawnMonster(MonsterType monsterType)
+    public static Monster SpawnMonster(MonsterType monsterType)
     {
         if(monsterType == MonsterType.Crab)
         {
-            Name = "Crab";
-            Class = CharacterClass.Monster;
-            Rank = MonsterRank.Normal;
-            Level = 1;
-            Experience = 10;
-            MaxExperience = 15;
-            MaxHealthPoints = 30;
-            MaxManaPoints = 0;
-            Attack = 10;
-            Defense = 2;
-            HealthPoints = MaxHealthPoints;
-            ManaPoints = MaxManaPoints;
+            return new Monster()
+            {
+            Name = "Crab",
+            Class = CharacterClass.Monster,
+            Rank = MonsterRank.Normal,
+            Level = 1,
+            Experience = 10,
+            MaxExperience = 15,
+            MaxHealthPoints = 30,
+            MaxManaPoints = 0,
+            Attack = 10,
+            Defense = 2,
+            HealthPoints = 30,
+            ManaPoints = 0,
+            Gold = 0
+            };
         }
         else if(monsterType == MonsterType.Slime)
         {
-            Name = "Slime";
-            Class = CharacterClass.Monster;
-            Rank = MonsterRank.Normal;
-            Level = 3;
-            Experience = 20;
-            MaxExperience = 25;
-            MaxHealthPoints = 50;
-            MaxManaPoints = 10;
-            Attack = 12;
-            Defense = 5;
-            HealthPoints = MaxHealthPoints;
-            ManaPoints = MaxManaPoints;
+            return new Monster()
+            {
+            Name = "Crab",
+            Class = CharacterClass.Monster,
+            Rank = MonsterRank.Normal,
+            Level = 3,
+            Experience = 30,
+            MaxExperience = 35,
+            MaxHealthPoints = 90,
+            MaxManaPoints = 0,
+            Attack = 20,
+            Defense = 10,
+            HealthPoints = 90,
+            ManaPoints = 0,
+            Gold = 10
+            };
         }
         if(monsterType == MonsterType.AncientDragon)
         {
-            Name = "Podro the Devourer";
-            Class = CharacterClass.Monster;
-            Rank = MonsterRank.Boss;
-            Level = 20;
-            Experience = 1000;
-            MaxExperience = 1500;
-            MaxHealthPoints = 600;
-            MaxManaPoints = 200;
-            Attack = 69;
-            Defense = 50;
-            HealthPoints = MaxHealthPoints;
-            ManaPoints = MaxManaPoints;
+            return new Monster()
+            {
+            Name = "Podro the Devourer",
+            Class = CharacterClass.Monster,
+            Rank = MonsterRank.Boss,
+            Level = 1,
+            Experience = 1000,
+            MaxExperience = 3000,
+            MaxHealthPoints = 300,
+            MaxManaPoints = 100,
+            Attack = 21632651,
+            Defense = 30,
+            HealthPoints = 3000,
+            ManaPoints = 0,
+            Gold = 380
+            };
         }
+        else
+            return null;
     }
 
     public static Monster SpawnRandomMonster()
     {
         Random random = new Random();
-        int probability = random.Next(1, 3);
+        int probability = random.Next(1, 4);
 
         if(probability == 1)
         {
@@ -71,6 +85,7 @@ public class Monster : Character
             Defense = 2,
             HealthPoints = 30,
             ManaPoints = 0,
+            Gold = 0
             };
         }
         else if(probability == 2)
@@ -89,6 +104,7 @@ public class Monster : Character
             Defense = 5,
             HealthPoints = 70,
             ManaPoints = 0,
+            Gold = 2
             };   
         }
         else if(probability == 3)
@@ -107,6 +123,7 @@ public class Monster : Character
             Defense = 8,
             HealthPoints = 300,
             ManaPoints = 150,
+            Gold = 5
             };   
         }
         else
