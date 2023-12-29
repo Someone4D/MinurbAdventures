@@ -1,11 +1,15 @@
+using static Menu;
+using static GameSystem;
+
+
 public static class Combat
 {
     public static void Battle(Player player, Monster monster)
     {
         Console.Clear();
 
-        Console.WriteLine("Você sente uma presença agressiva.");
-        Console.WriteLine($"{player.Name} foi emboscado por {monster.Name}\n");
+        Message("Você sente uma presença agressiva.");
+        Message($"{player.Name} foi emboscado por {monster.Name}\n");
         
         Console.ReadKey();
 
@@ -13,18 +17,22 @@ public static class Combat
         {
             Console.Clear();
 
-            Menu.ShowPlayerStatus(player);
-            Console.WriteLine();
-            Menu.ShowMonsterStatus(monster);
+            ShowPlayerStatus(player);
+            Message();
+            ShowMonsterStatus(monster);
+            player.HealCharacter(25);
 
             float damageDealt = monster.DealDamage(player.Attack, monster.Defense);
 
-            Console.WriteLine($"\n\nVocê atacou {monster.Name} e causou {damageDealt} pontos de dano!");
+            Message($"\n\nVocê atacou {monster.Name} e causou {damageDealt} pontos de dano!");
 
             damageDealt = player.DealDamage(monster.Attack, player.Defense);
 
-            Console.WriteLine($"{monster.Name} atacou {player.Name} e causou {damageDealt} pontos de dano!");
+            Message($"{monster.Name} atacou {player.Name} e causou {damageDealt} pontos de dano!");
             Console.ReadKey();
+
+            if(player.HealthPoints <= 0)
+                GameOver();
 
         }
         Random random = new Random();
@@ -32,8 +40,8 @@ public static class Combat
 
         player.GainExperience(gainedExp);
 
-        Console.WriteLine($"\n{player.Name} derrotou {monster.Name} e ganhou {gainedExp} de experiência!");
-        Console.WriteLine("Pressione uma tecla para continuar...");
+        Message($"\n{player.Name} derrotou {monster.Name} e ganhou {gainedExp} de experiência!");
+        Message("Pressione uma tecla para continuar...");
         Console.ReadKey();
     }
 }

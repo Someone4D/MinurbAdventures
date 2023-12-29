@@ -52,4 +52,11 @@ public class Character
         return damage;
     }
 
+    public void HealCharacter(int healPoints)
+    {
+        HealthPoints += healPoints;
+        if(HealthPoints >= MaxHealthPoints)
+            HealthPoints = MaxHealthPoints;
+    }
+
 }

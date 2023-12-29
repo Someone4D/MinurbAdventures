@@ -1,7 +1,12 @@
-﻿Player player = new Player();
-int exp = 10;
+﻿using static GameSystem;
+using static Menu;
 
-player = Menu.CharacterCreation();
+Player player = MainMenu();
+
+// Player player = new Player();
+// int exp = 10;
+
+// player = Menu.CharacterCreation();
 
 while(true)
 {
@@ -16,12 +21,12 @@ while(true)
 
 
 
-while(true)
-{
-    exp += 25;
-    Console.Clear();
-    player.GainExperience(exp);
-    Menu.ShowPlayerStatus(player);
-    System.Console.WriteLine($"\n\nVocê ganhou {exp} de experiência.");
-    Console.ReadKey();
-}
+// while(true)
+// {
+//     exp += 25;
+//     Console.Clear();
+//     player.GainExperience(exp);
+//     Menu.ShowPlayerStatus(player);
+//     Console.WriteLine($"\n\nVocê ganhou {exp} de experiência.");
+//     Console.ReadKey();
+// }

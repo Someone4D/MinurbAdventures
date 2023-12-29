@@ -23,22 +23,22 @@ public class Player : Character // Player está herdando a classe Character
 
             if(Class == CharacterClass.Warrior)
             {
-                HealthPoints += 3;
-                ManaPoints += 2;
+                MaxHealthPoints += 3;
+                MaxManaPoints += 2;
                 Attack += 2;
                 Defense += 3;
             }
             else if (Class == CharacterClass.Mage)
             {
-                HealthPoints += 2;
-                ManaPoints += 4;
+                MaxHealthPoints += 2;
+                MaxManaPoints += 4;
                 Attack += 3;
                 Defense += 1;
             }
             else if(Class == CharacterClass.Archer)
             {
-                HealthPoints += 3;
-                ManaPoints += 3;
+                MaxHealthPoints += 3;
+                MaxManaPoints += 3;
                 Attack += 2;
                 Defense += 2;
             }

@@ -1,29 +1,58 @@
+using static GameSystem;
+
 public static class Menu
 {
+    public static Player MainMenu()
+    {
+        Console.Clear();
+        Title("Bem vindo a Minurb Adventures!");
+        Message("Selecione uma opção:");
+        Message("\n1 - Criar um novo jogo?");
+        Message("2 - Continuar");
+        
+        int option = ChooseOption();
+
+        if(option == '1')
+            return CharacterCreation();
+        else if(option == '2')
+            return null;
+        
+        return null;
+    }
+
+    public static int ChooseOption()
+    {
+        ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+        return keyInfo.KeyChar;
+    }
+
     public static Player CharacterCreation()
     {
+        Console.Clear();
+
         Player character = new Player();
 
-        Console.Write("Digite um nome: ");
+        Message("Digite um nome: ");
         character.Name = Console.ReadLine()!;
 
         Console.Clear();
 
-        Console.WriteLine("Selecione uma classe: ");
-        Console.WriteLine("Warrior\nMage\nArcher\n");
-        
-        string chosenClass = Console.ReadLine()!.ToLower();
-        
-        Console.Clear();
+        Message("Selecione uma classe: ");
+        Message("1 - Warrior\n2 - Mage\n3 - Archer\n");
 
-        if(chosenClass == "warrior" || chosenClass == "1")
+        int option = ChooseOption();
+
+        if(option == '1')
             character.Class = CharacterClass.Warrior;
-        else if(chosenClass == "mage" || chosenClass == "2")
+        else if(option == '2')
             character.Class = CharacterClass.Mage;
-        else if(chosenClass == "archer" || chosenClass == "3")
+        else if(option == '3')
             character.Class = CharacterClass.Archer;
+
+        Console.Clear();
         
-        Console.WriteLine($"Personagem criado com sucesso.\n\nNome: {character.Name}\nClasse: {character.Class}\nLevel: {character.Level}\n\nPressione uma tecla para continuar...");
+        Message($"Personagem criado com sucesso.\n\nNome: {character.Name}\nClasse: {character.Class}\nLevel: {character.Level}\n\nPressione uma tecla para continuar...");
         
         Console.ReadKey();
 
@@ -32,20 +61,20 @@ public static class Menu
 
     public static void ShowPlayerStatus(Player character)
     {
-        Console.WriteLine($" Nome: {character.Name}\n Classe: {character.Class}\n Level: {character.Level} ({character.Experience}/{character.MaxExperience})\n Vida: {character.HealthPoints}\n Mana: {character.ManaPoints}\n Ataque: {character.Attack}\n Defesa: {character.Defense} ");
+        Message($" Nome: {character.Name}\n Classe: {character.Class}\n Level: {character.Level} ({character.Experience}/{character.MaxExperience})\n Vida: {character.HealthPoints}\n Mana: {character.ManaPoints}\n Ataque: {character.Attack}\n Defesa: {character.Defense} ");
     }
     
     public static void ShowMonsterStatus(Monster monster)
     {
-        Console.WriteLine($" Nome: {monster.Name}\n Tipo: {monster.Rank}\n Level: {monster.Level}\n Vida: {monster.HealthPoints}\n Mana: {monster.ManaPoints}\n Ataque: {monster.Attack}\n Defesa: {monster.Defense} ");
+        Message($" Nome: {monster.Name}\n Tipo: {monster.Rank}\n Level: {monster.Level}\n Vida: {monster.HealthPoints}\n Mana: {monster.ManaPoints}\n Ataque: {monster.Attack}\n Defesa: {monster.Defense} ");
     }
 
     public static MonsterType ShowBattleMenu()
     {
         Console.Clear();
 
-        Console.WriteLine("Selecione um monstro para batalhar:");
-        Console.WriteLine($"\n{MonsterType.Crab}\n{MonsterType.Slime}\n{MonsterType.AncientDragon}");
+        Message("Selecione um monstro para batalhar:");
+        Message($"\n{MonsterType.Crab}\n{MonsterType.Slime}\n{MonsterType.AncientDragon}");
         
         string chosenOption = Console.ReadLine()!;
         if(chosenOption == "0")
@@ -56,5 +85,15 @@ public static class Menu
             return MonsterType.AncientDragon;
         else
             return MonsterType.Crab;
+    }
+
+    public static void GameOver()
+    {
+        Console.Clear();
+
+        Title("Você morreu...");
+        Message("Pressione uma tecla para continuar");
+        Console.ReadKey();
+        MainMenu();
     }
 }
