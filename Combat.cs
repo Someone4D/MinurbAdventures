@@ -16,9 +16,12 @@ public static class Combat
         while (true)
         {
             Console.Clear();
-
+            Title("A batalha iniciou!");
+            Message();
+            Title("Jogador:", ConsoleColor.Green);
             ShowPlayerStatus(player);
             Message();
+            Title("Inimigo:", ConsoleColor.Red);
             ShowMonsterStatus(monster);
             //player.HealCharacter(25);
 
