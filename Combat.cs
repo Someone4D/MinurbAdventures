@@ -22,13 +22,20 @@ public static class Combat
             ShowMonsterStatus(monster);
             //player.HealCharacter(25);
 
-            float damageDealt = monster.DealDamage(player.Attack, monster.Defense);
+            Damage damage = monster.DealDamage(player);
+            
+            if(damage.IsCritical == true)
+                Message($"\n\nVocê atingiu um golpe devastador contra {monster.Name} causando {damage.DamageDealt} pontos de dano!", ConsoleColor.Red);
+            else
+                Message($"\n\nVocê atacou {monster.Name} causando {damage.DamageDealt} pontos de dano!");
 
-            Message($"\n\nVocê atacou {monster.Name} e causou {damageDealt} pontos de dano!");
+            damage = player.DealDamage(monster);
 
-            damageDealt = player.DealDamage(monster.Attack, player.Defense);
+             if(damage.IsCritical == true)
+                Message($"\n\n{monster.Name} atingiu um golpe devastador contra você causando {damage.DamageDealt} pontos de dano!", ConsoleColor.Red);
+            else
+                Message($"\n\n{monster.Name} atacou você causando {damage.DamageDealt} pontos de dano!");
 
-            Message($"{monster.Name} atacou {player.Name} e causou {damageDealt} pontos de dano!");
             Console.ReadKey();
 
             if (player.HealthPoints <= 0)

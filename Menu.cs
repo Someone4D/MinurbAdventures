@@ -42,7 +42,7 @@ public static class Menu
     public static void MainMenu(Player player)
     {
         Console.Clear();
-        Title($"{player.Name} - HP: {player.HealthPoints}/{player.MaxHealthPoints} MP: {player.ManaPoints}/{player.MaxManaPoints} Level: {player.Level} ({player.Experience}/{player.MaxExperience})", ConsoleColor.Cyan);
+        Title($"{player.Name} - HP: {player.HealthPoints}/{player.MaxHealthPoints} MP: {player.ManaPoints}/{player.MaxManaPoints} Level: {player.Level} XP: ({player.Experience}/{player.MaxExperience})", ConsoleColor.Cyan);
         Gold(player.Gold);
         Message("");
 
@@ -56,6 +56,8 @@ public static class Menu
             Status(player);
         else if(option == '4')
             Inventory();
+        else if(option == '9')
+            player.GainExperience(1000);
     }
 
     private static void Inventory()

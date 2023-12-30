@@ -14,6 +14,8 @@ public class Character
     public int ManaPoints { get; set; }
     public int MaxManaPoints { get; set; }
     public float Attack { get; set; }
+    public float CriticalRate { get; set; }
+    public float CriticalDamage { get; set; }
     public float Defense { get; set; }
     public bool Dead {get; set;}
     
@@ -28,21 +30,32 @@ public class Character
         MaxManaPoints = 100;
         Attack = 10;
         Defense = 5;
+        CriticalRate = 5;
+        CriticalDamage = 2.0f;
         HealthPoints = MaxHealthPoints;
         ManaPoints = MaxManaPoints;
         Dead = false;
     }
 
-    public float DealDamage(float attack, float defense)
+    public Damage DealDamage(Character character)
     {
         Random random = new Random();
 
-        float damage = (attack - defense) + random.Next(1, 10);
+        Damage damage = new Damage();
+        damage.DamageDealt = (character.Attack - character.Defense) + random.Next(1, 10);
+        
+        float criticalSuccess = random.Next(0, 101);
 
-        if(attack < defense)
-            damage = 0;
+        if(character.CriticalRate >= criticalSuccess)
+        {
+            damage.DamageDealt *= character.CriticalDamage;
+            damage.IsCritical = true;
+        }
 
-        HealthPoints -= Convert.ToInt32(damage);
+        if(character.Attack < character.Defense)
+            damage.DamageDealt = 0;
+
+        HealthPoints -= Convert.ToInt32(damage.DamageDealt);
         
         if(HealthPoints <= 0)
         {

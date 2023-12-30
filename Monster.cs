@@ -53,8 +53,8 @@ public class Monster : Character
             MaxExperience = 3000,
             MaxHealthPoints = 300,
             MaxManaPoints = 100,
-            Attack = 21632651,
-            Defense = 30,
+            Attack = 90,
+            Defense = 50,
             HealthPoints = 3000,
             ManaPoints = 0,
             Gold = 380
