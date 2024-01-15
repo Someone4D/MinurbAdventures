@@ -10,18 +10,56 @@ public static class Menu
     public static Player TitleScreen()
     {
         Console.Clear();
-        Title("Bem vindo a Minurb Adventures!");
-        Message("Selecione uma opção:");
-        Message("\n1 - Criar um novo jogo?");
-        Message("2 - Continuar");
-        
-        int option = ChooseOption();
 
-        if(option == '1')
-            return CharacterCreation();
-        else if(option == '2')
-            return LoadPlayer();
         
+        List<string> options = new List<string>(){"Novo Jogo", "Continuar", "Sair"};
+
+        string option = ChooseOption(options);
+
+        static string ChooseOption(List<string> options)
+        {
+            int index = 0;
+
+            while(true)
+            {
+                Console.Clear();
+                Title("Bem vindo a Minurb Adventures!");
+                Console.ForegroundColor = ConsoleColor.Gray;
+
+                for (int i = 0; i < options.Count; i++)
+                {
+                    if (index == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine(options[i]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    else
+                    {
+                        Console.WriteLine(options[i]);
+                    }
+                }
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+                if (keyInfo.Key == ConsoleKey.DownArrow)
+                    if (index < options.Count - 1)
+                        index++;
+                if (keyInfo.Key == ConsoleKey.UpArrow)
+                    if (index > 0)
+                        index--;
+                if (keyInfo.Key == ConsoleKey.Enter)
+                    return options[index];
+            }
+        }
+
+        if(option == "Novo Jogo")
+            return CharacterCreation();
+        else if(option == "Continuar")
+            return LoadPlayer();
+        else if(option == "Sair")
+            return null;
+
         return null;
     }
 
@@ -31,20 +69,57 @@ public static class Menu
 
         Console.Clear();
         Title($"{player.Name} - HP: {player.HealthPoints}/{player.MaxHealthPoints} MP: {player.ManaPoints}/{player.MaxManaPoints} Level: {player.Level} XP: ({player.Experience}/{player.MaxExperience})", ConsoleColor.Cyan);
-        Gold(player.Gold);
+        Gold(player.Gold); // não aparece mais
         Message("");
 
-        int option = ShowOptions(new List<string>(){"Explorar", "Cidade", "Status", "Inventário"});
+        List<string> options = new List<string>(){"Explorar", "Cidade", "Status", "inventário", "DEV OPTION"};
+
+        string option = ChooseOption(options);
+
+        static string ChooseOption(List<string> options)
+        {
+            int index = 0;
+
+            while(true)
+            {
+                Console.Clear();
+
+                for (int i = 0; i < options.Count; i++)
+                {
+                    if (index == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine(options[i]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    else
+                    {
+                        Console.WriteLine(options[i]);
+                    }
+                }
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+                if (keyInfo.Key == ConsoleKey.DownArrow)
+                    if (index < options.Count - 1)
+                        index++;
+                if (keyInfo.Key == ConsoleKey.UpArrow)
+                    if (index > 0)
+                        index--;
+                if (keyInfo.Key == ConsoleKey.Enter)
+                    return options[index];
+            }
+    }
         
-        if(option == '1')
+        if(option == "Explorar")
             Explore(player);
-        else if(option == '2')
+        else if(option == "Cidade")
             City(player);
-        else if(option == '3')
+        else if(option == "Status")
             Status(player);
-        else if(option == '4')
+        else if(option == "inventário")
             Inventory();
-        else if(option == '9')
+        else if(option == "DEV OPTION")
             player.GainExperience(1000);
         
     }
@@ -146,19 +221,57 @@ public static class Menu
 
         Console.Clear();
 
-        Message("Selecione uma classe: ");
-        int option = ShowOptions(new List<string>(){"Warrior", "Mage", "Archer"});
+        Message("Selecione uma classe: ");// não aparece
         
-        if(option == '1')
+        List<string> options = new List<string>(){"Guerreiro", "Mago", "Arqueiro"};
+
+        string option = ChooseOption(options);
+
+        static string ChooseOption(List<string> options)
+        {
+                int index = 0;
+
+            while(true)
+            {
+                Console.Clear();
+
+                for (int i = 0; i < options.Count; i++)
+                {
+                    if (index == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine(options[i]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    else
+                    {
+                        Console.WriteLine(options[i]);
+                    }
+                }
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+
+                if (keyInfo.Key == ConsoleKey.DownArrow)
+                    if (index < options.Count - 1)
+                        index++;
+                if (keyInfo.Key == ConsoleKey.UpArrow)
+                    if (index > 0)
+                        index--;
+                if (keyInfo.Key == ConsoleKey.Enter)
+                    return options[index];
+            }
+        }
+        
+        if(option == "Guerreiro")
             character.Class = CharacterClass.Warrior;
-        else if(option == '2')
+        else if(option == "Mago")
             character.Class = CharacterClass.Mage;
-        else if(option == '3')
+        else if(option == "Arqueiro")
             character.Class = CharacterClass.Archer;
 
         Console.Clear();
         
-        Message($"Personagem criado com sucesso.\n\nNome: {character.Name}\nClasse: {character.Class}\nLevel: {character.Level}\n\nPressione uma tecla para continuar...");
+        Message($"Personagem criado com sucesso.\n\nNome: {character.Name}\nClasse: {option}\nLevel: {character.Level}\n\nPressione uma tecla para continuar...");
         
         Console.ReadKey();
 
