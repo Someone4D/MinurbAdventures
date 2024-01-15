@@ -20,27 +20,15 @@ public static class Menu
         if(option == '1')
             return CharacterCreation();
         else if(option == '2')
-            return new Player()
-            {
-                Name = "MindBlank",
-                Class = CharacterClass.Warrior,
-                Level = 1,
-                Experience = 0,
-                MaxExperience = 100,
-                MaxHealthPoints = 100,
-                MaxManaPoints = 100,
-                Attack = 10,
-                Defense = 5,
-                HealthPoints = 100,
-                ManaPoints = 100,
-                Dead = false,
-            };
+            return LoadPlayer();
         
         return null;
     }
 
     public static void MainMenu(Player player)
     {
+        SavePlayer(player);
+
         Console.Clear();
         Title($"{player.Name} - HP: {player.HealthPoints}/{player.MaxHealthPoints} MP: {player.ManaPoints}/{player.MaxManaPoints} Level: {player.Level} XP: ({player.Experience}/{player.MaxExperience})", ConsoleColor.Cyan);
         Gold(player.Gold);
@@ -58,6 +46,7 @@ public static class Menu
             Inventory();
         else if(option == '9')
             player.GainExperience(1000);
+        
     }
 
     private static void Inventory()
@@ -172,6 +161,8 @@ public static class Menu
         Message($"Personagem criado com sucesso.\n\nNome: {character.Name}\nClasse: {character.Class}\nLevel: {character.Level}\n\nPressione uma tecla para continuar...");
         
         Console.ReadKey();
+
+        SavePlayer(character);
 
         return character;
     }

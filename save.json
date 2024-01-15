@@ -1,0 +1,18 @@
+{
+  "Title": null,
+  "Name": "Pedrinho",
+  "Class": 3,
+  "Level": 12,
+  "Experience": 8210,
+  "MaxExperience": 284,
+  "Gold": 2,
+  "HealthPoints": 210,
+  "MaxHealthPoints": 210,
+  "ManaPoints": 210,
+  "MaxManaPoints": 210,
+  "Attack": 65,
+  "CriticalRate": 5,
+  "CriticalDamage": 2,
+  "Defense": 60,
+  "Dead": false
+}
