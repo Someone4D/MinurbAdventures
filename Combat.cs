@@ -23,7 +23,6 @@ public static class Combat
             Message();
             Title("Inimigo:", ConsoleColor.Red);
             ShowMonsterStatus(monster);
-            //player.HealCharacter(25);
 
             Damage damage = monster.DealDamage(player);
             
@@ -40,7 +39,7 @@ public static class Combat
                 Message($"\n\n{monster.Name} atacou você causando {damage.DamageDealt} pontos de dano!");
 
             Console.ReadKey();
-
+        
             if (player.HealthPoints <= 0)
             {
                 GameOver();

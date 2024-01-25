@@ -42,7 +42,7 @@ public class Character
         Random random = new Random();
 
         Damage damage = new Damage();
-        damage.DamageDealt = (character.Attack - character.Defense) + random.Next(1, 10);
+        damage.DamageDealt = (character.Attack - Defense) + random.Next(1, 10);
         
         float criticalSuccess = random.Next(0, 101);
 
@@ -52,7 +52,7 @@ public class Character
             damage.IsCritical = true;
         }
 
-        if(character.Attack < character.Defense)
+        if(character.Attack < Defense)
             damage.DamageDealt = 0;
 
         HealthPoints -= Convert.ToInt32(damage.DamageDealt);

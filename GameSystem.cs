@@ -16,7 +16,7 @@ public static class GameSystem
 
     public static void Gold(int gold)
     {
-        Message(gold.ToString() + " Minurbiuns", ConsoleColor.Yellow);
+        Message(gold.ToString() + " Minurbiuns", ConsoleColor.DarkYellow);
     }
 
     public static void Save(object obj, string path)

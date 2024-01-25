@@ -2,15 +2,9 @@ public static class Area
 {
     public static List<string> GetAllAreaNames()
     {
-        AreaName[] areaNames = (AreaName[])Enum.GetValues(typeof(AreaName));
-        List<string> names = new List<string>();
-        
-        foreach (var item in areaNames)
-        {
-            names.Add(item.ToString());
-        }
+        string[] names = Enum.GetNames(typeof(AreaName));
 
-        return names;
+        return names.ToList();
     }
     
     public enum AreaName
@@ -19,6 +13,7 @@ public static class Area
         Cavern,
         Beach,
         Mountain,
-        Volcano
+        Volcano,
+        Snowfield
     }
 }

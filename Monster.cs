@@ -1,6 +1,12 @@
 public class Monster : Character
 {
     public MonsterRank Rank { get; set; }
+
+    Monster()
+    {
+        HealthPoints = MaxHealthPoints;
+        ManaPoints = MaxManaPoints;
+    }
     public static Monster SpawnMonster(MonsterType monsterType)
     {
         if(monsterType == MonsterType.Crab)
@@ -17,8 +23,6 @@ public class Monster : Character
             MaxManaPoints = 0,
             Attack = 10,
             Defense = 2,
-            HealthPoints = 30,
-            ManaPoints = 0,
             Gold = 0
             };
         }
@@ -36,8 +40,6 @@ public class Monster : Character
             MaxManaPoints = 0,
             Attack = 20,
             Defense = 10,
-            HealthPoints = 90,
-            ManaPoints = 0,
             Gold = 10
             };
         }
@@ -51,12 +53,10 @@ public class Monster : Character
             Level = 1,
             Experience = 1000,
             MaxExperience = 3000,
-            MaxHealthPoints = 300,
+            MaxHealthPoints = 3000,
             MaxManaPoints = 100,
             Attack = 90,
             Defense = 50,
-            HealthPoints = 3000,
-            ManaPoints = 0,
             Gold = 380
             };
         }

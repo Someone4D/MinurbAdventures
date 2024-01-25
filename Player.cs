@@ -15,7 +15,7 @@ public class Player : Character // Player está herdando a classe Character
 
     public void LevelUp()
     {
-        if(Experience >= MaxExperience)
+        while(Experience >= MaxExperience)
         {
             Level++;
             Experience -= MaxExperience;
@@ -43,6 +43,14 @@ public class Player : Character // Player está herdando a classe Character
                 Attack += 5;
                 Defense += 5;
             }
+            else if(Class == CharacterClass.Overlord)
+            {
+                MaxHealthPoints += 1000;
+                MaxManaPoints += 1000;
+                Attack += 500;
+                Defense += 500;
+                CriticalRate += 100;
+            }
             
             HealthPoints = MaxHealthPoints;
             ManaPoints = MaxManaPoints;
@@ -57,5 +65,6 @@ public class Player : Character // Player está herdando a classe Character
         Warrior,
         Mage,
         Archer,
+        Overlord,
         Monster
     }
